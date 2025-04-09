@@ -8,7 +8,7 @@ export default function DashboardLayout({
 }>) {
   return (
     <section className="w-full">
-      <div className="antialiased bg-white">
+      <div className="antialiased bg-neutral-950">
         <div className="flex min-h-screen">
            <LeftSidebar/>
           <main className="flex-1 p-6">{children}</main> 

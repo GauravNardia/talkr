@@ -14,6 +14,7 @@ import { useCallback, useRef, useState } from "react";
 import { useConversation } from '@11labs/react';
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
+import { Badge } from "../ui/badge";
 
 export const Dashboard = () => {
     const websocketRef = useRef<string | null>(null);
@@ -146,9 +147,9 @@ export const Dashboard = () => {
   return (
     <main className="min-h-screen bg-white px-8 py-6 text-black">
        <div className="mt-20">
-         <Link href="/feedback" className="flex w-[250px] text-left text-regular border rounded-full px-5 py-2">
-           Please give your feedback <ChevronRight/>
-         </Link>
+         <Badge className="flex text-left text-sm text-neutral-700 bg-white border border-neutral-700 rounded-full">
+          <Link href="/feedback" className="w-full flex">Please give your feedback<ChevronRight size={20}/></Link>
+         </Badge>
        </div>
 
        <div className="mt-18 w-full">
@@ -204,13 +205,22 @@ export const Dashboard = () => {
                </AlertDialogContent>
             </AlertDialog>
 
-            <Link href="/app/excercise" className="flex flex-col justify-center items-center">
+            <Link href="/app/scenario-practice" className="flex flex-col justify-center items-center">
+            <div className="bg-neutral-100 hover:bg-neutral-200 transition duration-500 cursor-pointer rounded-xl w-40 h-40 flex flex-col justify-center items-center text-center">
+              <div className="w-ful flex jACustify-center items-center">
+                <Image src="/assets/icons/exercise.svg" width={65} height={35} alt="speaking icon" />
+              </div>
+                </div>
+                  <div className="mt-2 text-sm text-gray-800 font-medium">Scenario practice</div>
+            </Link>
+
+            <Link href="/app/quiz" className="flex flex-col justify-center items-center">
             <div className="bg-neutral-100 hover:bg-neutral-200 transition duration-500 cursor-pointer rounded-xl w-40 h-40 flex flex-col justify-center items-center text-center">
               <div className="w-ful flex justify-center items-center">
                 <Image src="/assets/icons/exercise.svg" width={65} height={35} alt="speaking icon" />
               </div>
                 </div>
-                  <div className="mt-2 text-sm text-gray-800 font-medium">Start exercise</div>
+                  <div className="mt-2 text-sm text-gray-800 font-medium">Quiz</div>
             </Link>
 
           </div>
