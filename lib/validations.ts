@@ -13,8 +13,8 @@ export const signUpSchema = z.object({
 
 export const onboardingSchema = z.object({
   email: z.string().email("Invalid email address"),
-  username: z.string(),
-  nativeLanguage: z.string(),
-  targetLanguage: z.string()
+  fullName: z.string(),
+  nativeLanguage: z.string().min(1, "Native language is required"),
+  targetLanguage: z.string().min(1, "Target language is required"),
 });
 

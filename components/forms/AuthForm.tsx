@@ -10,7 +10,7 @@ import {
   UseFormReturn,
 } from "react-hook-form";
 import { ZodType } from "zod";
-import { useRouter } from "next/navigation";
+import { redirect, useRouter } from "next/navigation";
 import Link from "next/link";
 
 import { Button } from "@/components/ui/button";
@@ -69,7 +69,13 @@ const AuthForm = <T extends FieldValues>({
           ? "You have successfully signed in."
           : "You have successfully signed up.",
       });
-      router.push("/app/home");
+
+      if (isSignIn) {
+        router.push("/app/home");
+      } else {
+        router.push("/onboarding");
+      }
+
     } else {
       toast(`Error ${isSignIn ? "signing in" : "signing up"}`,{
         description: result.error ?? "An error occurred.",
