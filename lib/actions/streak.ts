@@ -1,15 +1,16 @@
 "use client"
-import { db } from '@/lib/db' 
-import { users } from '@/lib/schema'
+
 import { eq } from 'drizzle-orm'
 import { isToday, isYesterday } from 'date-fns'
+import { db } from '@/database/drizzle'
+import { users } from '@/database/schema'
 
 export async function updateStreak(userId: string) {
   const [user] = await db.select().from(users).where(eq(users.id, userId))
 
   if (!user) return
 
-  const last = new Date(user.lastActivityDate)
+  const last = new Date(user.lastActivityDate!)
   const now = new Date()
 
   if (isToday(last)) return 
@@ -19,14 +20,14 @@ export async function updateStreak(userId: string) {
     newStreak = (user.streakCount || 0) + 1
   }
 
-  const newLongestStreak = Math.max(newStreak, user.longestStreak)
+  const newLongestStreak = Math.max(newStreak, user.longestStreak!)
 
   await db
     .update(users)
     .set({
       streakCount: newStreak,
       longestStreak: newLongestStreak, 
-      lastActivityDate: now,
+      lastActivityDate: now.toISOString(),
     })
     .where(eq(users.id, userId))
 }
