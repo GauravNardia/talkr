@@ -1,0 +1,1 @@
+ALTER TABLE "users" ADD COLUMN "streak_count" integer DEFAULT 1 NOT NULL;

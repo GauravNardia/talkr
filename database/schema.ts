@@ -23,6 +23,8 @@ export const users = pgTable("users", {
     nativeLanguage: text("native_language"),
     targetLanguage: text("target_language"),
     onboarded: boolean("onboarded").default(false),
+    streakCount: integer("streak_count").default(1),
+    longestStreak: integer("longest_streak").default(1),
     lastActivityDate: date("last_activity_date").defaultNow(),
     createdAt: timestamp("created_at", {
       withTimezone: true,

@@ -1,24 +1,26 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Archivo, DM_Serif_Text, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner"
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const archivo = Archivo({
+  variable: "--font-archivo",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const dm = DM_Serif_Text({
+  weight: "400",
+  variable: "--font-dm-serif-text",
   subsets: ["latin"],
 });
 
 export const metadata: Metadata = {
   title: "Talkr",
-  description: "A Language learning AI assistant",
+  description: "Learn to speak any language directly from your native language",
+  icons: "/assets/icons/logo.svg"
 };
 
 export default async function RootLayout({
@@ -32,9 +34,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <SessionProvider session={session}>
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${archivo.variable} ${dm.variable}`}>
         {children}
         <Toaster />
       </body>

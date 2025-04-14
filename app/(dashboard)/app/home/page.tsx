@@ -1,34 +1,27 @@
-import { auth } from '@/auth'
-import { getUserById } from '@/lib/actions/user';
+import React from 'react';
+import {auth} from "@/auth";
 import { redirect } from 'next/navigation';
-import React from 'react'
+import { getUserById } from '@/lib/actions/user';
+import DashboardHome from '@/components/dashboard/Home';
 
-const Dashboard = async() => {
+const Home = async() => {
   const session = await auth();
+  const user = await getUserById({ id: session.user.id });
 
   if (!session || !session.user?.id) {
     return null;
   }
 
-  const user = await getUserById({ id: session.user.id });
-
   if (!user) {
     return <div>User not found</div>;
   }
-
-  if (!user.onboarded) {
-    redirect('/onboarding');
-  } else {
-    redirect('/app/home')
-  }
-
-  
+    
   return (
-    <div>
-      {user?.onboarded!}
-      Dashboard
-      </div>
-  )
-}
+    <main className="w-full">
+      {/* @ts-ignore */}
+       <DashboardHome name={user.fullName} language={user.targetLanguage} streak={user.streakCount} longestStreak={user.longestStreak} />
+    </main>
+  );
+};
 
-export default Dashboard
+export default Home;

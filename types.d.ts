@@ -27,3 +27,8 @@ interface User {
   lastActivityDate: string | null
   createdAt: Date | null
 }
+
+interface Streak {
+  streak: number;
+  longestStreak: number
+}
