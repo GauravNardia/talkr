@@ -13,9 +13,55 @@ export const getInitials = (name: string): string =>
     .toUpperCase()
     .slice(0, 2);
 
+    export const capitalizeFirstLetter = (str: string) => {
+      if (!str) return '';
+      return str.charAt(0).toUpperCase() + str.slice(1);
+}    
+
 export const capitalizeName = (str: string): string => {
       return str
         .split(" ")
         .map(word => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
         .join(" ");
-    }    
+}
+
+
+
+
+export interface LanguageChunk {
+  foreign: string;
+  native: string;
+}
+
+export const formatMultilingualContent = (content: string): LanguageChunk[] => {
+  const clean = content
+    .replace(/^"+|"+$/g, '') // remove outer quotes
+    .replace(/\\n/g, '\n') // fix newlines
+    .trim();
+
+  const match = clean.match(/^(.*?)\s*\n*\(\s*([\s\S]*?)\s*\)$/);
+
+  if (match) {
+    const [, foreignRaw, nativeRaw] = match;
+
+    return [
+      {
+        foreign: foreignRaw.trim(),
+        native: nativeRaw.trim(),
+      },
+    ];
+  }
+
+  // fallback: show just foreign text
+  return [
+    {
+      foreign: clean,
+      native: '',
+    },
+  ];
+};
+
+    
+    
+    
+    

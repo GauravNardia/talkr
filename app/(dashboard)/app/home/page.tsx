@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { use } from 'react';
 import {auth} from "@/auth";
 import { redirect } from 'next/navigation';
 import { getUserById } from '@/lib/actions/user';
@@ -21,7 +21,7 @@ const Home = async() => {
   return (
     <main className="w-full">
       {/* @ts-ignore */}
-       <DashboardHome name={user.fullName} language={user.targetLanguage} streak={user.streakCount} longestStreak={user.longestStreak} />
+       <DashboardHome name={user.fullName} nativeLanguage={user.nativeLanguage} language={user.targetLanguage} streak={user.streakCount} longestStreak={user.longestStreak} />
     </main>
   );
 };

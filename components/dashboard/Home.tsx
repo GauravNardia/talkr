@@ -24,13 +24,14 @@ import { capitalizeName } from '@/lib/utils';
 
 interface Props {
   name: string;
+  nativeLanguage: string;
   language: string;
   streak: number;
   longestStreak:number;
 
 }
 
-export default function DashboardHome({name, language, streak, longestStreak}: Props) {
+export default function DashboardHome({name, nativeLanguage, language, streak, longestStreak}: Props) {
   const websocketRef = useRef<string | null>(null);
   const reconnectTimeoutRef = useRef(null);
   const [isReconnecting, setIsReconnecting] = useState(false);
@@ -68,9 +69,9 @@ export default function DashboardHome({name, language, streak, longestStreak}: P
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: "userById.username",
-          native_language: "userById.native",
-          target_language: "userById.target",
+          user_name: name,
+          native_language: nativeLanguage,
+          target_language: language,
         },
       });
 
@@ -94,9 +95,9 @@ export default function DashboardHome({name, language, streak, longestStreak}: P
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: "userById.username",
-          native_language: "userById.native",
-          target_language: "userById.target",
+          user_name: name,
+          native_language: nativeLanguage,
+          target_language: language,
         },
       });
 
