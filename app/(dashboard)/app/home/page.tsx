@@ -6,11 +6,13 @@ import DashboardHome from '@/components/dashboard/Home';
 
 const Home = async() => {
   const session = await auth();
-  const user = await getUserById({ id: session.user.id });
 
   if (!session || !session.user?.id) {
     return null;
   }
+  
+  const user = await getUserById({ id: session?.user.id });
+
 
   if (!user) {
     return <div>User not found</div>;

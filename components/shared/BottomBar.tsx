@@ -3,7 +3,7 @@ import { navItems } from '@/constants'
 import React from 'react'
 import { Button } from '../ui/button'
 import { redirect, usePathname } from 'next/navigation';
-import { LogIn } from 'lucide-react';
+import { LogIn, Settings } from 'lucide-react';
 
 const BottomBar = () => {
       const pathname = usePathname();
@@ -27,7 +27,7 @@ const BottomBar = () => {
     variant="ghost"
     className="w-10 h-10 flex justify-center items-center text-white hover:bg-green-600/60 rounded-md"
   >
-    <LogIn size={18} />
+    <Settings size={18} />
   </Button>
 </div>
 

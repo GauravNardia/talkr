@@ -2,8 +2,12 @@ import Image from 'next/image'
 import React from 'react'
 import { Button } from '../ui/button'
 import Link from 'next/link'
+import { Session } from 'next-auth'
+import { Avatar } from '../ui/avatar'
+import { getInitials } from '@/lib/utils'
 
-const TopBar = () => {
+const TopBar = ({session}: {session: Session}) => {
+
   return (
     <section>
         <div className="w-full bg-neutral-950 border-b border-neutral-800 px-4 py-3 flex items-center justify-between md:hidden fixed top-0 z-30">
@@ -13,15 +17,9 @@ const TopBar = () => {
       </Link>
     
 
-      <Button variant="ghost" className="rounded-full p-0 h-10 w-10 overflow-hidden">
-        <Image
-          src="/assets/images/avatar.png"
-          alt="avatar"
-          width={40}
-          height={40}
-          className="rounded-full object-cover"
-        />
-      </Button>
+      <Avatar className='bg-neutral-900 p-5 text-white text-center flex justify-center items-center'>
+      {getInitials(session.user?.name!)}
+    </Avatar>
     </div>
     </section>
  
