@@ -1,4 +1,3 @@
-// pages/api/generate-quiz.ts
 import { generateQuizQuestion } from '@/lib/actions/generateQuizQuestions';
 import {  NextResponse } from 'next/server';
 

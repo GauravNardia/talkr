@@ -11,7 +11,13 @@ export async function GET(){
 export async function POST(req: Request){
     const { messages } = await req.json();
     const session = await auth();
-    if(!session || !session.user?.id) return null;
+    
+    if (!session || !session.user?.id) {
+        return new Response(JSON.stringify({ error: "Unauthorized" }), {
+          status: 401,
+          headers: { 'Content-Type': 'application/json' },
+        });
+      }
 
     const user = await getUserById({ id: session?.user.id });
 
