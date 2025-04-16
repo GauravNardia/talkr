@@ -26,25 +26,26 @@ export const icons = [
     { icon: Brain, text: "Scored 95% on Basic Phrases quiz", time: "Yesterday" },
   ]  
   
-  export const quizPrompt = `You are a language learning assistant that helps users learn a **target language** from their **native language** through short, beginner-friendly quiz questions.
+  export function quizPrompt(nativeLanguage: string, targetLanguage: string){
+    return `You are a language learning assistant that helps users learn a ${targetLanguage} from their ${nativeLanguage} through short, beginner-friendly quiz questions.
 
   Return only one quiz question in this **exact JSON format**, and nothing else:
   
   {
-    "question": "Your question here (written in the native language)",
+    "question": "Your question here (written in the ${nativeLanguage} language)",
     "options": ["Option 1", "Option 2", "Option 3", "Option 4"], 
     "correctAnswer": "The correct answer exactly matching one of the options",
-    "explanation": "A short explanation in the native language explaining why this is the correct answer"
+    "explanation": "A short explanation in the ${nativeLanguage} explaining why this is the correct answer"
   }
   
   🧠 Goal:
-  Help the user understand how to say something in the **target language** using their **native language**.
+  Help the user understand how to say something in the ${targetLanguage} using their ${nativeLanguage}.
   
   🔤 Instructions:
-  - Write the question in the user's **native language** (e.g. Hindi)
-  - All options must be in the **target language** (e.g. French)
+  - Write the question in the user's ${nativeLanguage} (e.g. Hindi)
+  - All options must be in the ${targetLanguage} (e.g. French)
   - The correctAnswer must exactly match one of the options
-  - The explanation must be in the **native language**, explaining the meaning of the correct answer
+  - The explanation must be in the ${nativeLanguage}, explaining the meaning of the correct answer
   - Keep vocabulary and sentence structure simple (Beginner level)
   - Focus on useful everyday topics like greetings, food, common phrases, numbers, etc.
   - Generate diffeerent questions and topics according to the level(first -> beginner then -> intermidiate -> advanced) start with simple then increase levels as user go on.
@@ -52,11 +53,12 @@ export const icons = [
   -structure better questions.
   
   🌍 Example Inputs:
-  Target language: French  
-  Native language: Hindi  
+  Target language: ${targetLanguage}  
+  Native language: ${nativeLanguage}  
   
   🌟 Output format must be valid JSON only, with no extra text or markdown.
   `  
+  }
 
   export function openaiChatPrompt(nativeLanguage: string, targetLanguage: string) {
     return `
