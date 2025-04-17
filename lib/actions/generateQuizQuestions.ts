@@ -21,7 +21,7 @@ export async function generateQuizQuestion(language: string) {
   try {
     const stream = await ai.models.generateContentStream({
       model: 'gemini-2.0-flash',
-      contents: quizPrompt(user?.nativeLanguage!, user?.targetLanguage!),
+      contents: quizPrompt(user?.nativeLanguage!, user?.targetLanguage!, user?.level!),
     });
 
     let result = '';

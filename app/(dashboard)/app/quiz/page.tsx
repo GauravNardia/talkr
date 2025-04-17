@@ -2,7 +2,7 @@ import { auth } from "@/auth";
 import Quiz from "@/components/dashboard/Quiz";
 import { Badge } from "@/components/ui/badge";
 import { getUserById } from "@/lib/actions/user";
-import { Clock, Sparkles, Star } from "lucide-react";
+import { Sparkles, Star } from "lucide-react";
 import { capitalizeName } from "@/lib/utils";
 import type React from "react";
 import { generateQuizQuestion } from "@/lib/actions/generateQuizQuestions";
@@ -27,29 +27,27 @@ export default async function QuizzesPage() {
         style={{ "--delay": 0 } as React.CSSProperties}
       >
         <h1 className="text-3xl font-bold mb-2">Quiz</h1>
-        <p className="text-muted-foreground">
+        <p className="text-muted-foreground text-lg">
           Test your knowledge, earn XP, and unlock achievements
         </p>
       </div>
 
-      <div className="bg-game-dark-accent mb-6 p-6 bg-neutral-800">
+      <div className="bg-game-dark-accent mb-6 p-6 bg-neutral-900 rounded-xl">
         <div className="flex justify-between items-start">
           <div>
             <h2 className="text-xl font-semibold mb-2 flex items-center gap-2">
               <Sparkles className="h-5 w-5 text-green-500" />
-              {capitalizeName(user.targetLanguage!)} Vocabulary Challenge
+              {capitalizeName(user.targetLanguage!)} Quiz Challenge
             </h2>
             <div className="flex items-center text-sm text-muted-foreground">
-              <Clock className="h-4 w-4 mr-1" /> 10 minutes
-              <span className="mx-2">•</span>
               <span>15 questions</span>
               <span className="mx-2">•</span>
-              <span>Beginner level</span>
+              <span>{user.level} level</span>
             </div>
           </div>
-          <Badge className="bg-green-500 hover:bg-green-600 text-white">
-            <Star className="h-3 w-3 mr-1" />
-            <span className="text-[10px]">2X XP</span>
+          <Badge className="bg-green-500 hover:bg-green-600 text-white text-lg">
+            <Star className="h-5 w-5 mr-1" />
+            <span className="text-[12px]">10 XP</span>
           </Badge>
         </div>
       </div>

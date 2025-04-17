@@ -24,8 +24,10 @@ interface User {
   nativeLanguage: string | null
   targetLanguage: string | null
   onboarded: boolean | null
+  level: number
   lastActivityDate: string | null
   createdAt: Date | null
+
 }
 
 interface Streak {

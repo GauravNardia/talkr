@@ -4,6 +4,7 @@ import React, { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { generateQuizQuestion } from "@/lib/actions/generateQuizQuestions";
+import { insertQuizDataIntoDb } from "@/lib/actions/quiz";
 
 type Question = {
   question: string;
@@ -18,7 +19,6 @@ const Quiz = ({user}: any) => {
   const [score, setScore] = useState(0);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  console.log("users", user.targetLanguage)
 
   const fetchNewQuestion = async () => {
     setLoading(true);
@@ -37,18 +37,35 @@ const Quiz = ({user}: any) => {
     fetchNewQuestion(); 
   }, []);
 
-  const handleOptionClick = (selected: string) => {
+  const handleOptionClick = async(selected: string) => {
     if (selectedOption) return; 
 
     setSelectedOption(selected);
 
+    const isCorrect = selected === currentQuestion?.correctAnswer;
+    const correctAns = isCorrect ? true : false;
+
     if (selected === currentQuestion?.correctAnswer) {
       setScore((prev) => prev + 1);
     }
+
+    if (currentQuestion) {
+      await insertQuizDataIntoDb({
+        userId: user.id,
+        question: currentQuestion.question,
+        answer: selected,
+        isCorrect: correctAns,
+        options: currentQuestion.options
+      });
+    }
+  
+
+    
   };
 
   const goToNext = () => {
     fetchNewQuestion(); 
+
   };
 
   if (loading) return <p>Loading question...</p>;
@@ -66,7 +83,7 @@ const Quiz = ({user}: any) => {
           <Button
             key={option}
             variant="outline"
-            className={`flex items-center justify-start p-4 h-auto border border-neutral-800 rounded-lg bg-neutral-900 cursor-pointer group transition-all ${
+            className={`flex items-center justify-start p-4 h-auto border border-neutral-800 rounded-lg bg-neutral-900 hover:bg-neutral-900 hover:border-green-500 hover:text-white cursor-pointer group transition-all ${
               selectedOption === option ? "border-green-500 bg-green-900 text-white" : ""
             }`}
             onClick={() => handleOptionClick(option)}
@@ -79,7 +96,7 @@ const Quiz = ({user}: any) => {
             >
               <span className="text-sm text-white">{String.fromCharCode(65 + index)}</span>
             </div>
-            <span className="text-left text-sm md:text-base">{option}</span>
+            <span className="text-left text-md md:text-base">{option}</span>
           </Button>
         ))}
       </div>
@@ -100,6 +117,7 @@ const Quiz = ({user}: any) => {
       <div className="flex justify-between items-center mt-4">
         <p className="text-sm">Score: {score}</p>
         <Button
+          className="cursor-pointer"
           onClick={goToNext}
           disabled={!selectedOption}
         >

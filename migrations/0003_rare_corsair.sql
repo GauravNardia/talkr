@@ -1,1 +1,0 @@
-ALTER TABLE "users" ALTER COLUMN "streak_count" DROP NOT NULL;

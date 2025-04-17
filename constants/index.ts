@@ -26,7 +26,7 @@ export const icons = [
     { icon: Brain, text: "Scored 95% on Basic Phrases quiz", time: "Yesterday" },
   ]  
   
-  export function quizPrompt(nativeLanguage: string, targetLanguage: string){
+  export function quizPrompt(nativeLanguage: string, targetLanguage: string, level:number){
     return `You are a language learning assistant that helps users learn a ${targetLanguage} from their ${nativeLanguage} through short, beginner-friendly quiz questions.
 
   Return only one quiz question in this **exact JSON format**, and nothing else:
