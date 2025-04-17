@@ -22,6 +22,20 @@
       "when": 1744860323306,
       "tag": "0002_orange_doctor_octopus",
       "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "7",
+      "when": 1744865696740,
+      "tag": "0003_whole_plazm",
+      "breakpoints": true
+    },
+    {
+      "idx": 4,
+      "version": "7",
+      "when": 1744866147258,
+      "tag": "0004_curvy_mongu",
+      "breakpoints": true
     }
   ]
 }

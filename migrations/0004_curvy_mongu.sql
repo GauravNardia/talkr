@@ -1,0 +1,1 @@
+ALTER TABLE "users" ALTER COLUMN "total_xp" SET DEFAULT 1;

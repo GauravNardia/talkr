@@ -25,7 +25,9 @@ export const capitalizeName = (str: string): string => {
         .join(" ");
 }
 
-
+export const percentOfUsers = (rank: number, total: number) => {
+  return Math.ceil((rank / total) * 100);
+};
 
 
 export interface LanguageChunk {

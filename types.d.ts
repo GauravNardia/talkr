@@ -25,6 +25,7 @@ interface User {
   targetLanguage: string | null
   onboarded: boolean | null
   level: number
+  rank: number | null;
   totalXp: number | null;
   level: number | null;
   streakCount: number | null;
