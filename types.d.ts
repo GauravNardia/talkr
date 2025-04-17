@@ -25,6 +25,10 @@ interface User {
   targetLanguage: string | null
   onboarded: boolean | null
   level: number
+  totalXp: number | null;
+  level: number | null;
+  streakCount: number | null;
+  longestStreak: number | null;
   lastActivityDate: string | null
   createdAt: Date | null
 
