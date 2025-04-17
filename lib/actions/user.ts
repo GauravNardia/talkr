@@ -12,7 +12,7 @@ export const getUserById = async ({ id }: { id: string }): Promise<User | null> 
       .from(users)
       .where(eq(users.id, id))
 
-    return user.length > 0 ? user[0] : null
+    return user.length > 0 ? { ...user[0], level: user[0].level ?? 0 } : null
     
   } catch (error) {
     console.error(error)
