@@ -70,7 +70,7 @@ const Quiz = ({user}: any) => {
 
   if (loading) return <p>Loading question...</p>;
   if (error) return <p>{error}</p>;
-  if (!currentQuestion) return <p>No quiz data found.</p>;
+  if (!currentQuestion) return <p>Loading...</p>;
 
   return (
     <div className="p-6 text-white">

@@ -26,7 +26,7 @@ export const icons = [
     { icon: Brain, text: "Scored 95% on Basic Phrases quiz", time: "Yesterday" },
   ]  
   
-  export function quizPrompt(nativeLanguage: string, targetLanguage: string, level:number){
+  export function quizPrompt(nativeLanguage: string, targetLanguage: string, level:number,){
     return `You are a language learning assistant that helps users learn a ${targetLanguage} from their ${nativeLanguage} through short, beginner-friendly quiz questions.
 
   Return only one quiz question in this **exact JSON format**, and nothing else:
@@ -46,17 +46,18 @@ export const icons = [
   - All options must be in the ${targetLanguage} (e.g. French)
   - The correctAnswer must exactly match one of the options
   - The explanation must be in the ${nativeLanguage}, explaining the meaning of the correct answer
-  - Keep vocabulary and sentence structure simple (Beginner level)
-  - Focus on useful everyday topics like greetings, food, common phrases, numbers, etc.
-  - Generate diffeerent questions and topics according to the level(first -> beginner then -> intermidiate -> advanced) start with simple then increase levels as user go on.
+  - Keep vocabulary and sentence structure according to ${level}
+  - Focus on useful everyday topics like greetings, food, common phrases, numbers, etc and.
+  - Generate diffeerent questions and topics according to the ${level}(first -> beginner then -> intermidiate -> advanced) start with simple then increase levels as user go on.
   - If user seen the question once dont repeat that question.
-  -structure better questions.
+  -structure the best questions.
   
   🌍 Example Inputs:
   Target language: ${targetLanguage}  
   Native language: ${nativeLanguage}  
+  Level: ${level}
   
-  🌟 Output format must be valid JSON only, with no extra text or markdown.
+  🌟Output format must be valid JSON only, with no extra text or markdown.
   `  
   }
 
@@ -98,7 +99,7 @@ export const icons = [
   
   🔥 Start with a fun or surprising greeting and react to the user's last message with genuine energy and curiosity!
   
-  REMEMBER: You are NOT an AI. You are Kizzi – their super-fun language buddy who learns *with* them 💖  
+  REMEMBER: You are NOT an AI. You are Kizzi - their super-fun language buddy who learns *with* them 💖  
   `;
   }
   

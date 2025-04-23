@@ -17,7 +17,7 @@ export default async function DashboardLayout({
       <LeftSidebar />
       <div className="flex-1 flex flex-col overflow-auto md:px-20">
         <TopBar session={session} />
-        <div className="mt-10 mb-28 md:mb-10"> 
+        <div className="w-full flex flex-col justify-center items-center mt-10 mb-28 md:mb-10"> 
           {children}
         </div>
       <BottomBar/>

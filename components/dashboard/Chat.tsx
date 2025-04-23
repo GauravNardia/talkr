@@ -79,7 +79,7 @@ const Chat = ({ user }: any) => {
         </TabsList>
 
         {/* --- CONVERSATION TAB --- */}
-        <TabsContent value="conversation" className="mt-0 game-section">
+        <TabsContent value="conversation" className=" sticky mt-0 -mt-8 game-section">
           <div className="border border-neutral-800 rounded-lg overflow-hidden bg-black">
             <div className="bg-neutral-800 p-4 border-b border-neutral-800">
               <div className="flex items-center">
@@ -207,9 +207,10 @@ const Chat = ({ user }: any) => {
         </TabsContent>
 
         {/* --- LESSONS TAB --- */}
-        <TabsContent value="lessons" className="mt-0 game-section">
+        <TabsContent value="lessons" className="mt-0  justify-center items-center">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* This part was cut off in your input */}
+            coming soon..
           </div>
         </TabsContent>
       </Tabs>
