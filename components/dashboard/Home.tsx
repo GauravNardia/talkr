@@ -69,9 +69,9 @@ export default function DashboardHome({name, nativeLanguage, language, streak, l
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: name,
-          native_language: nativeLanguage,
-          target_language: language,
+          user_name: "gaurav",
+          native_language: "hindi",
+          target_language: "english",
         },
       });
 
@@ -95,9 +95,9 @@ export default function DashboardHome({name, nativeLanguage, language, streak, l
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: name,
-          native_language: nativeLanguage,
-          target_language: language,
+          user_name: "gaurav",
+          native_language: "hindi",
+          target_language: "english",
         },
       });
 
