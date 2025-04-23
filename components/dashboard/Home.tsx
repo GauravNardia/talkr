@@ -53,9 +53,6 @@ export default function DashboardHome({name, nativeLanguage, language, streak, l
     onError: (error) => {
       console.error('Conversation error:', error);
     },
-    onMessage: (message) => {
-      console.log('Received message:', message);
-    },
   });
 
   const handleReconnect = async () => {
@@ -69,9 +66,9 @@ export default function DashboardHome({name, nativeLanguage, language, streak, l
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: "gaurav",
-          native_language: "hindi",
-          target_language: "english",
+          user_name: name,
+          native_language: nativeLanguage,
+          target_language: language,
         },
       });
 
@@ -95,9 +92,9 @@ export default function DashboardHome({name, nativeLanguage, language, streak, l
       const conversationId = await conversation.startSession({
         signedUrl: data.signedUrl,
         dynamicVariables: {
-          user_name: "gaurav",
-          native_language: "hindi",
-          target_language: "english",
+          user_name: name,
+          native_language: nativeLanguage,
+          target_language: language,
         },
       });
 
