@@ -24,6 +24,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { toast } from "sonner";
+import Image from "next/image";
 
 
 // Form field labels and input types
@@ -84,15 +85,13 @@ const AuthForm = <T extends FieldValues>({
   };
 
   return (
-    <div className="flex flex-col gap-4">
-      <h1 className="text-2xl font-semibold text-white">
-        {isSignIn ? "Welcome back to Talkr" : "Create your library account"}
+    <div className=" w-75 sm:w-96 flex flex-col justify-center gap-4 text-neutral-200">
+      <div className=" flex justify-center text-center">
+        <Image src="/assets/icons/logo.svg" width={45} height={45} alt="logo" />
+      </div>
+      <h1 className="text-center text-2xl font-semibold">
+        {isSignIn ? "Welcome back to Talkr" : "Create your account"}
       </h1>
-      <p className="text-light-100">
-        {isSignIn
-          ? "Access the vast collection of resources, and stay updated"
-          : "Please fill in your details to sign up and begin your journey."}
-      </p>
 
       <Form {...form}>
         <form
@@ -123,17 +122,17 @@ const AuthForm = <T extends FieldValues>({
             />
           ))}
 
-          <Button type="submit" className="form-btn">
+          <Button type="submit" className="bg-white text-black cursor-pointer hover:bg-neutral-400">
             {isSignIn ? "Sign In" : "Sign Up"}
           </Button>
         </form>
       </Form>
 
       <p className="text-center text-base font-medium">
-        {isSignIn ? "New to BookWise? " : "Already have an account? "}
+        {isSignIn ? "New to Talkr?" : "Already have an account? "}
         <Link
           href={isSignIn ? "/sign-up" : "/sign-in"}
-          className="font-bold text-primary"
+          className="font-semibold ml-2 text-green-500"
         >
           {isSignIn ? "Create an account" : "Sign in"}
         </Link>
